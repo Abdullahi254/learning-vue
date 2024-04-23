@@ -24,8 +24,11 @@
 import NavbarLink from "./NavbarLink.vue"
 
 export default {
-    components:{
+    components: {
         NavbarLink
+    },
+    created() {
+        this.getThemeSettings()
     },
     data() {
         return {
@@ -38,7 +41,19 @@ export default {
             if (this.theme === "light") {
                 theme = "dark"
             }
-            return this.theme = theme
+            this.theme = theme
+            this.setThemeSettings()
+        },
+        setThemeSettings() {
+            localStorage.setItem("theme", this.theme)
+        },
+        getThemeSettings() {
+            let theme = localStorage.getItem("theme")
+            if (theme) {
+                this.theme = theme
+            } else {
+                this.theme = "light"
+            }
         }
     },
     props: ['pages', 'activeIndex', 'changeActive'],
