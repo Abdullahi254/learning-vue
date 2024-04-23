@@ -9,10 +9,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" v-for="(link, index) in pages" :key="link.text">
-                    <a class="nav-link" :href="link.link" :title="`this is a link to ${link.text}`"
-                        @click.prevent="changeActive(index)" :class="{ active: activeIndex == index }">
-                        {{ link.text }}
-                    </a>
+                    <navbar-link :link="link" :isActive="activeIndex == index" @click.prevent="changeActive(index)">
+                    </navbar-link>
                 </li>
             </ul>
         </div>
@@ -23,8 +21,12 @@
 </template>
 
 <script>
+import NavbarLink from "./NavbarLink.vue"
 
 export default {
+    components:{
+        NavbarLink
+    },
     data() {
         return {
             theme: "dark",
@@ -40,6 +42,11 @@ export default {
         }
     },
     props: ['pages', 'activeIndex', 'changeActive'],
+    computed: {
+        activateLink() {
+            return (index) => this.activeIndex === index ? true : false
+        }
+    }
 
 }
 

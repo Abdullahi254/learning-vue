@@ -1,0 +1,19 @@
+{
+    "pages": [
+        {
+            "text": "Home",
+            "link": "index.html",
+            "message": "This is my home page"
+        },
+        {
+            "text": "About",
+            "link": "about.html",
+            "message": "This is my about page"
+        },
+        {
+            "text": "Contact",
+            "link": "contact.html",
+            "message": "This is my messages page"
+        }
+    ]
+}
