@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ["link", "isActive"],
+    props: ["page", "isActive"],
     computed: {
         activeClasses() {
             return {
@@ -13,8 +13,8 @@ export default {
 </script>
 
 <template>
-    <a class="nav-link" :href="link.link" :title="`this is a link to ${link.text}`" :class="activeClasses">
-        {{ link.text }}
+    <a class="nav-link" :href="page.linkUrl" :title="`this is a link to ${page.linkText}`" :class="activeClasses">
+        {{ page.pageTitle }}
     </a>
 </template>
 

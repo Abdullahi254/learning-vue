@@ -1,19 +1,25 @@
 {
     "pages": [
         {
-            "text": "Home",
-            "link": "index.html",
-            "message": "This is my home page"
+            "pageTitle": "Home",
+            "content": "This is my home page",
+            "linkText": "Home",
+            "linkUrl": "index.html",
+            "published" : true
         },
         {
-            "text": "About",
-            "link": "about.html",
-            "message": "This is my about page"
+            "pageTitle": "About",
+            "content": "This is my about page",
+            "linkText": "About",
+            "linkUrl": "about.html",
+            "published" : true
         },
         {
-            "text": "Contact",
-            "link": "contact.html",
-            "message": "This is my messages page"
+            "pageTitle": "Contact",
+            "content": "This is my contact page",
+            "linkText": "Contact",
+            "linkUrl": "contact.html",
+            "published" : true
         }
     ]
 }
