@@ -77,6 +77,13 @@ export default {
             }
 
         }
+    },
+    watch: {
+        pageTitle(newTitle, oldTitle){
+            if(this.linkText === oldTitle){
+                this.linkText = newTitle
+            }
+        }
     }
 }
 
