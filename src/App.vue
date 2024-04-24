@@ -2,7 +2,7 @@
     <navbar :pages="pages" :active-index="activeIndex" :change-active="(index) => activeIndex = index"></navbar>
     <!-- <page-viewer v-if="pages.length > 0" :page="pages[activeIndex]"></page-viewer> -->
     <!-- <login :handle-submit="handleLogin"></login> -->
-    <create-page :handle-submit="createPage"></create-page>
+    <create-page @create-page="createPage"></create-page>
 </template>
 
 <script>
@@ -36,14 +36,8 @@ export default {
             console.log(email)
             console.log(pass)
         },
-        createPage(pageTitle, content, linkText, linkUrl, published){
-            this.pages.push({
-                pageTitle,
-                content,
-                linkText,
-                linkUrl,
-                published
-            })
+        createPage(obj){
+            this.pages.push(obj)
         }
     }
 }

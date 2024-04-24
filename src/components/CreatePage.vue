@@ -37,12 +37,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" :disabled="disableSubmit" @click.prevent="() => {
-                handleSubmit(
-                    pageTitle, content, linkText, linkUrl, published
-                )
-                clearInputs()
-            }">Submit</button>
+            <button type="submit" class="btn btn-primary" :disabled="disableSubmit"
+                @click.prevent="handleForm">Submit</button>
         </form>
     </div>
 </template>
@@ -50,7 +46,23 @@
 <script>
 
 export default {
-    props: ["handleSubmit"],
+    emits: {
+        createPage({ pageTitle, content, linkText, linkUrl }) {
+            if (!pageTitle) {
+                return false
+            }
+            if (!content) {
+                return false
+            }
+            if (!linkText) {
+                return false
+            }
+            if (!linkUrl) {
+                return false
+            }
+            return true
+        }
+    },
     data() {
         return {
             pageTitle: '',
@@ -76,13 +88,30 @@ export default {
                 this.published = false
             }
 
-        }
+        },
+
+
     },
     watch: {
-        pageTitle(newTitle, oldTitle){
-            if(this.linkText === oldTitle){
+        pageTitle(newTitle, oldTitle) {
+            if (this.linkText === oldTitle) {
                 this.linkText = newTitle
             }
+        }
+    },
+    methods: {
+        handleForm() {
+            this.$emit("createPage", {
+                pageTitle: this.pageTitle,
+                content: this.content,
+                linkText: this.linkText,
+                linkUrl: this.linkUrl,
+                published: this.published
+            })
+            // this.handleSubmit(
+            //     this.pageTitle, this.content, this.linkText, this.linkUrl, this.published
+            // )
+            this.clearInputs()
         }
     }
 }
