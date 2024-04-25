@@ -8,8 +8,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                    <navbar-link :pages="publishedPages" :activeIndex="activeIndex">
-                    </navbar-link>
+                <navbar-link :pages="publishedPages" :activeIndex="activeIndex">
+                </navbar-link>
+                <li class="nav-item" @click.prevent="$bus.$emit('changeActive', index)">
+                    <router-link class="nav-link" to="/create" :class="activateCreateLink()">
+                        Create
+                    </router-link>
+                </li>
             </ul>
         </div>
 
@@ -52,15 +57,27 @@ export default {
             } else {
                 this.theme = "light"
             }
+        },
+        activateCreateLink() {
+            return {
+                active: this.$route.path == "/create",
+                emphasize: this.$route.path == "/create",
+            }
         }
     },
     props: ['pages', 'activeIndex',],
     computed: {
-        publishedPages(){
-            return this.pages.filter(page=>page.published)
+        publishedPages() {
+            return this.pages.filter(page => page.published)
         }
     }
 
 }
 
 </script>
+
+<style scoped>
+.emphasize {
+    text-decoration: underline !important;
+}
+</style>

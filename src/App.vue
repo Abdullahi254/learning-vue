@@ -2,7 +2,8 @@
     <navbar :pages="pages" :active-index="activeIndex"></navbar>
     <!-- <page-viewer v-if="pages.length > 0" :page="pages[activeIndex]"></page-viewer> -->
     <!-- <login :handle-submit="handleLogin"></login> -->
-    <create-page @create-page="createPage"></create-page>
+    <!-- <create-page @create-page="createPage"></create-page> -->
+    <router-view></router-view>
 </template>
 
 <script>

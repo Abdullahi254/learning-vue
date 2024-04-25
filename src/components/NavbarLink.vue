@@ -13,12 +13,11 @@ export default {
 </script>
 
 <template>
-    <li class="nav-item" v-for="(page, index) in pages" :key="index"
-        @click.prevent="$bus.$emit('changeActive', index)">
-        <a class="nav-link" :href="page.linkUrl" :title="`this is a link to ${page.linkText}`"
+    <li class="nav-item" v-for="(page, index) in pages" :key="index" @click.prevent="$bus.$emit('changeActive', index)">
+        <router-link class="nav-link" :to="`/${index}`"  :title="`this is a link to ${page.linkText}`"
             :class="activeClasses(index)">
             {{ page.pageTitle }}
-        </a>
+        </router-link>
     </li>
 
 </template>
