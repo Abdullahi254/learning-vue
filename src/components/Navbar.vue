@@ -8,10 +8,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item" v-for="(page, index) in publishedPages" :key="page.pageTitle">
-                    <navbar-link :page="page" :isActive="activeIndex == index" @click.prevent="changeActive(index)">
+                    <navbar-link :pages="publishedPages" :activeIndex="activeIndex">
                     </navbar-link>
-                </li>
             </ul>
         </div>
 
@@ -56,11 +54,8 @@ export default {
             }
         }
     },
-    props: ['pages', 'activeIndex', 'changeActive'],
+    props: ['pages', 'activeIndex',],
     computed: {
-        activateLink() {
-            return (index) => this.activeIndex === index ? true : false
-        },
         publishedPages(){
             return this.pages.filter(page=>page.published)
         }

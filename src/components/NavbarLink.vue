@@ -1,11 +1,11 @@
 <script>
 export default {
-    props: ["page", "isActive"],
-    computed: {
-        activeClasses() {
+    props: ["pages", "activeIndex"],
+    methods: {
+        activeClasses(index) {
             return {
-                active: this.isActive,
-                emphasize: this.isActive
+                active: this.activeIndex == index,
+                emphasize: this.activeIndex == index
             }
         }
     }
@@ -13,13 +13,18 @@ export default {
 </script>
 
 <template>
-    <a class="nav-link" :href="page.linkUrl" :title="`this is a link to ${page.linkText}`" :class="activeClasses">
-        {{ page.pageTitle }}
-    </a>
+    <li class="nav-item" v-for="(page, index) in pages" :key="index"
+        @click.prevent="$bus.$emit('changeActive', index)">
+        <a class="nav-link" :href="page.linkUrl" :title="`this is a link to ${page.linkText}`"
+            :class="activeClasses(index)">
+            {{ page.pageTitle }}
+        </a>
+    </li>
+
 </template>
 
 <style scoped>
-.emphasize{
+.emphasize {
     text-decoration: underline !important;
 }
 </style>
