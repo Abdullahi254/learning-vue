@@ -1,6 +1,6 @@
 <template>
     <nav :class="['navbar', 'navbar-expand-lg', `navbar-${theme}`, `bg-${theme}`, 'px-2']">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <router-link  class="navbar-brand" to="/0">Navbar</router-link >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,10 +8,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <navbar-link :pages="publishedPages" :activeIndex="activeIndex">
+                <navbar-link :pages="publishedPages">
                 </navbar-link>
                 <li class="nav-item" @click.prevent="$bus.$emit('changeActive', index)">
-                    <router-link class="nav-link" to="/create" :class="activateCreateLink()">
+                    <router-link class="nav-link" to="/create" active-class="active emphasize">
                         Create
                     </router-link>
                 </li>
@@ -58,14 +58,8 @@ export default {
                 this.theme = "light"
             }
         },
-        activateCreateLink() {
-            return {
-                active: this.$route.path == "/create",
-                emphasize: this.$route.path == "/create",
-            }
-        }
     },
-    props: ['pages', 'activeIndex',],
+    props: ['pages',],
     computed: {
         publishedPages() {
             return this.pages.filter(page => page.published)

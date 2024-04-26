@@ -1,5 +1,5 @@
 <template>
-    <navbar :pages="pages" :active-index="activeIndex"></navbar>
+    <navbar :pages="pages" ></navbar>
     <!-- <page-viewer v-if="pages.length > 0" :page="pages[activeIndex]"></page-viewer> -->
     <!-- <login :handle-submit="handleLogin"></login> -->
     <!-- <create-page @create-page="createPage"></create-page> -->
@@ -26,7 +26,6 @@ export default {
     },
     data() {
         return {
-            activeIndex: 0,
             pages: []
         }
     },
