@@ -1,5 +1,7 @@
-import CreatePage from "@/components/CreatePage.vue"
-import PageViewer from "@/components/PageViewer.vue"
+import CreatePage from "@/views/CreatePage.vue"
+import PageViewer from "@/views/PageViewer.vue"
+import PageList from "@/views/PageList.vue"
+import Pages from "@/views/Pages.vue"
 import { createRouter, createWebHashHistory } from "vue-router"
 
 const router = createRouter({
@@ -17,7 +19,15 @@ const router = createRouter({
                 next()
             }
         },
-        { path: '/create', component: CreatePage }
+        {
+            path: "/pages",
+            children: [
+                {path: '', component: PageList},
+                { path: 'create', component: CreatePage }
+            ],
+            component: Pages
+        },
+
     ]
 })
 

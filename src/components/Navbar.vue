@@ -11,8 +11,8 @@
                 <navbar-link :pages="publishedPages">
                 </navbar-link>
                 <li class="nav-item" @click.prevent="$bus.$emit('changeActive', index)">
-                    <router-link class="nav-link" to="/create" active-class="active emphasize">
-                        Create
+                    <router-link class="nav-link" to="/pages" active-class="active emphasize">
+                        pages
                     </router-link>
                 </li>
             </ul>

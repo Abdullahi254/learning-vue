@@ -1,22 +1,13 @@
 <template>
     <navbar :pages="pages" ></navbar>
-    <!-- <page-viewer v-if="pages.length > 0" :page="pages[activeIndex]"></page-viewer> -->
-    <!-- <login :handle-submit="handleLogin"></login> -->
-    <!-- <create-page @create-page="createPage"></create-page> -->
     <router-view></router-view>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue"
-import PageViewer from "./components/PageViewer.vue"
-import Login from "./components/Login.vue"
-import CreatePage from "./components/CreatePage.vue"
 export default {
     components: {
-        PageViewer,
         Navbar,
-        Login,
-        CreatePage
     },
     created() {
         this.getPages()
